@@ -1,0 +1,55 @@
+{% load rest_framework %} {% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My REST Api Tutorial</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'rest/css/body.css' %}">
+</head>
+
+<body id="grad">
+    <div class="container py-4">
+        <div class="card border-info">
+            <div class="card-header text-center">
+                Pravidla použiti REST Api
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush text-center">
+                    <li class="list-group-item pb-3 pt-0">Pro přistup do hlavni stránky<a class="btn btn-primary mx-2" href="/rest-api/" role="button">Go!</a></li>
+                    <li class="list-group-item">Pro zobrazeni seznamu záznamu v JSONu<a class="btn btn-primary mx-2" href="/rest-api/folder/" role="button">Go!</a></li>
+                    <li class="list-group-item pb-0">Pro zobrazeni určitého záznamu
+                        <div class="d-flex justify-content-center">
+                            <form id="thisForm" class="form-inline">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="id" placeholder="ID" value="">
+                                </div>
+                                <button class="btn btn-primary mx-2" onclick="myFunc()">Go!</button>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    {% if folders %} {% for folder in folders %}
+
+    <ul class="list-group">
+        <li class="list-group-item rounded-0 border-info">
+            {{ folder }}
+        </li>
+    </ul>
+
+    {% endfor %} {% endif %}
+
+    <script src="{% static 'rest/js/myFunc.js'  %}"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>
